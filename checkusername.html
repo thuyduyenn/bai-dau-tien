@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+             $("#username").blur(function(){
+                var u = $(this).val();
+                $.get("check.php", {user: u}, function(data){
+                        if(data !== 0){
+                            $("#text").html("tên đã được sử dụng rồi");
+                            $("#text").css("color","red");
+                        }else {
+                            $("#text").html("tên hợp lệ");
+                            $("#text").css("color","blue");
+                        }
+                })
+             })
+        })
+    </script>
+    <link rel="stylesheet" href="./style.css">
+    
+    <title>Check username by ajax</title>
+
+</head>
+<body>
+    <form action="" method="post">
+          <h1>Check username by Ajax</h1>
+          <label for="username"> username</label>
+          <input type="text" name="username" id="username"> 
+          <div id="text"></div>
+          <label for="password"> your password</label>
+          <input type="text" name="password" id="password">
+          <input type="submit" name="submit" value="submit">
+          
+    </form>
+</body>
+</html>
