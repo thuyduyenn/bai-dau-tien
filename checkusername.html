@@ -10,10 +10,10 @@
              $("#username").blur(function(){
                 var u = $(this).val();
                 $.get("check.php", {user: u}, function(data){
-                        if(data !== 0){
+                        if(data == 1){
                             $("#text").html("tên đã được sử dụng rồi");
                             $("#text").css("color","red");
-                        }else {
+                        }else if (data == 0) {
                             $("#text").html("tên hợp lệ");
                             $("#text").css("color","blue");
                         }
